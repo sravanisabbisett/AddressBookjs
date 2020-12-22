@@ -129,3 +129,16 @@ if(contactindex!=-1){
 }else{
     console.log("conatct not found");
 }
+
+//UC5 deleteContact
+
+function DeleteContact(firstname){
+    for(let i=0;i<contacts.length;i++){
+        if(contacts[i].firstname==firstname){
+            contacts.pop(i);
+            console.log(contacts.toString());
+        }
+    }
+}
+console.log("delete contact");
+DeleteContact('Lakshmi');
