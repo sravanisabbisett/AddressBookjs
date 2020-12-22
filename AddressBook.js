@@ -200,3 +200,13 @@ function GetCountByState(state) {
 }
 console.log("Number of contacts belonging to  city: " + GetCountByCity("Bantumilli"));
 console.log("Number of contacts belonging to state: " + GetCountByState("Andhrapradesh"));
+
+// UC 11 Sort by contact by person name
+function sortByPersonName() {
+    let sortedArray = contacts;
+    sortedArray.sort((a, b) => a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase()));
+    console.log("\n\Printing sorted array by person name : ");
+    sortedArray.forEach(person => console.log(person.toString()));
+}
+
+sortByPersonName();
