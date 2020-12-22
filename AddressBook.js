@@ -110,7 +110,7 @@ function AddContacts(firstname,lastname,address,city,state,zip,phoneNumber,email
     contacts.push(contact);
 }
 AddContacts('SriSri','Sabbisetti','Gandhichowk','Bantumilli','Andhrapradesh','521324','8712443377','sravni@gmail.com');
-AddContacts('Sravani','Sabbisetti','Gandhichowk','Bantumilli','Andhrapradesh','521324','8712443377','sravni@gmail.com');
+AddContacts('Sravani','Sabbisetti','Gandhichowk','Bantumilli','Telanagana','521324','8712443377','sravni@gmail.com');
 AddContacts('Lakshmi','Sabbisetti','Madhapur','Hyderabad','Telanagana','500801','9290815127','Rupika@gmail.com');
 console.log(contacts.toString());
 
@@ -154,30 +154,49 @@ console.log("Counting number of persons in addressbook");
 let count = contacts.reduce(((count) => { count += 1; return count; }), 0);
 console.log("Count number of contacts is: " + count)
 
-//uc8
-function SearchCityOrState(cityOrState){
-    if(contacts.filter((p=>p.city==cityOrState)||(p=>p.state==cityOrState))){
-        console.log(contacts.toString());
+console.log("\nUC8\n");
+function searchContactWithCity(firstName ,city) {
+    if(contacts.filter((p=>p.firstName==firstName)&&(p=>p.city==city))){
+        return true;
     }
+    return false;
 }
-
-//searching with city
-console.log("searching with city");
-SearchCityOrState('Hyderabad');
-//searching with state
-console.log("searching with state");
-SearchCityOrState('Andhrapradesh');
-
-//UC9 view person with city or state
-function ViewCityOrState(cityOrState){
-    if(contacts.filter((p=>p.city==cityOrState)||(p=>p.state==cityOrState))){
-        console.log(contacts.toString());
+function searchContactWithState(firstName, state) {
+    if(contacts.filter((p=>p.firstName==firstName)&&(p=>p.state==state))){
+        return true;
     }
+    return false;
 }
+console.log(searchContactWithCity("SriSri", "Sabbisetti", "Bantumilli"));
+console.log(searchContactWithState("SriSri", "Sabbisetti", "Andhrapradesh"));
 
-//view person by city
-console.log("view person by city");
-ViewCityOrState('Hyderabad');
-//view person by state
-console.log("view person by state");
-ViewCityOrState('Andhrapradesh');
+
+
+
+// UC9 View Person By City or State
+function viewContactWithCity(firstName, lastName, city) {
+    if (contacts.some(obj => obj.firstName == firstName && obj.lastName == lastName && obj.city == city)) {
+        return "Contact found: " +
+            contacts.filter(p => p.firstName == firstName && p.lastName == lastName)[0].toString();
+    }
+    return false;
+}
+function viewContactWithState(firstName, lastName, state) {
+    if (contacts.some(obj => obj.firstName == firstName && obj.lastName == lastName && obj.state == state)) {
+        return "Contact found: " +
+            contacts.filter(p => p.firstName == firstName && p.lastName == lastName)[0].toString();
+    }
+    return false;
+}
+console.log(viewContactWithCity("SriSri", "Sabbisetti", "Bantumilli"));
+console.log(viewContactWithState("SriSri", "Sabbisetti", "Andhrapradesh"));
+
+console.log("\nUC10");
+function GetCountByCity(city) {
+    return contacts.filter(obj => obj.city == city).reduce((countOfContact, obj) => countOfContact += 1, 0);
+}
+function GetCountByState(state) {
+    return contacts.filter(obj => obj.state == state).reduce((countOfContact, obj) => countOfContact += 1, 0);
+}
+console.log("Number of contacts belonging to  city: " + GetCountByCity("Bantumilli"));
+console.log("Number of contacts belonging to state: " + GetCountByState("Andhrapradesh"));
