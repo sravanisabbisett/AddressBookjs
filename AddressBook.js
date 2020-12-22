@@ -92,7 +92,7 @@ class Contact{
         }
     }
     toString(){
-        return "FirstName:"+this.firstname+",Lastname:"+this.lastname+",Address:"+this.address+",City:"
+        return "\nFirstName:"+this.firstname+",Lastname:"+this.lastname+",Address:"+this.address+",City:"
                 +this.city+",State:"+this.state+",Zip:"+this.zip+",MobileNumber:"+this.phoneNumber+",Email:"
                 +this.email;
     }
@@ -105,4 +105,27 @@ function AddContacts(firstname,lastname,address,city,state,zip,phoneNumber,email
     contacts.push(contact);
 }
 AddContacts('Sravani','Sabbisetti','Gandhichowk','Bantumilli','Andhrapradesh','521324','8712443377','sravni@gmail.com');
+AddContacts('Lakshmi','Sabbisetti','Madhapur','Hyderabad','Telanagana','500801','9290815127','Rupika@gmail.com');
 console.log(contacts.toString());
+
+//Uc4 edit conatct
+function GetConatctIndex(firstname){
+    for(let i=0;i<contacts.length;i++){
+        if(contacts[i].firstname==firstname){
+            return i;
+        }
+    }
+    return -1;
+}
+
+let contactindex=GetConatctIndex('Sravani');
+if(contactindex!=-1){
+    console.log("contacts before updation");
+    console.log(contacts.toString());
+    contacts[contactindex].firstname='Rupika';
+    contacts[contactindex].city='Hyderabad';
+    console.log("contacts after updation");
+    console.log(contacts.toString());
+}else{
+    console.log("conatct not found");
+}
