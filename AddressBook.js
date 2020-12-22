@@ -142,3 +142,8 @@ function DeleteContact(firstname){
 }
 console.log("delete contact");
 DeleteContact('Lakshmi');
+
+//UC6 count
+console.log("Counting number of persons in addressbook");
+let count = contacts.reduce(((count) => { count += 1; return count; }), 0);
+console.log("Count number of contacts is: " + count);
