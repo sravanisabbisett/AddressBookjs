@@ -167,3 +167,17 @@ SearchCityOrState('Hyderabad');
 //searching with state
 console.log("searching with state");
 SearchCityOrState('Andhrapradesh');
+
+//UC9 view person with city or state
+function ViewCityOrState(cityOrState){
+    if(contacts.filter((p=>p.city==cityOrState)||(p=>p.state==cityOrState))){
+        console.log(contacts.toString());
+    }
+}
+
+//view person by city
+console.log("view person by city");
+ViewCityOrState('Hyderabad');
+//view person by state
+console.log("view person by state");
+ViewCityOrState('Andhrapradesh');
