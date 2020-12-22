@@ -101,9 +101,15 @@ class Contact{
 console.log("UC3 AddContacts");
 let contacts=new Array();
 function AddContacts(firstname,lastname,address,city,state,zip,phoneNumber,email){
+    //UC7_DuplicateData
+    if(contacts.some(s=>s.firstname==firstname)){
+        console.log("Contact aready exists");
+        return;
+    }
     let contact=new Contact(firstname,lastname,address,city,state,zip,phoneNumber,email);
     contacts.push(contact);
 }
+AddContacts('Sravani','Sabbisetti','Gandhichowk','Bantumilli','Andhrapradesh','521324','8712443377','sravni@gmail.com');
 AddContacts('Sravani','Sabbisetti','Gandhichowk','Bantumilli','Andhrapradesh','521324','8712443377','sravni@gmail.com');
 AddContacts('Lakshmi','Sabbisetti','Madhapur','Hyderabad','Telanagana','500801','9290815127','Rupika@gmail.com');
 console.log(contacts.toString());
@@ -146,4 +152,4 @@ DeleteContact('Lakshmi');
 //UC6 count
 console.log("Counting number of persons in addressbook");
 let count = contacts.reduce(((count) => { count += 1; return count; }), 0);
-console.log("Count number of contacts is: " + count);
+console.log("Count number of contacts is: " + count)
